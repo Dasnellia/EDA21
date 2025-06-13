@@ -3,12 +3,15 @@
 #include <cstring>
 
 
-Evento:Evento(const char* n = "", FranjaHoraria fh = FranjaHoraria(), Zona* z = nullptr, int id_evento = 0,int horasduracion )
-        : FH(fh), zona(z), publicado(false), id(id_evento) {
-        strncpy(Nombre, n, 59);
-        Nombre[59] = '\0';
-        horasduracion = horasduracion
-    }
+
+
+
+Evento::Evento(const char* n, FranjaHoraria fh, Zona* z, int id_evento, int duracion)
+    : FH(fh), zona(z), publicado(false), id(-1), horasduracion(duracion) {
+    strncpy(Nombre, n, 59);
+    Nombre[59] = '\0';
+}
+
 
 void Evento::setNombre(const char* n) {
     strncpy(Nombre, n, 59);
@@ -51,12 +54,12 @@ int Evento::getId() const {
     return id;
 }
 
-int getHorasDuracion() const {
+int Evento::getHorasDuracion() const {
     return Evento.horasduracion;
 }
 
-void Evento::setHorasDuracion(int n){
-    Evento.horasduracion = n
+void Evento::setHorasDuracion(int n) {
+    horasduracion = n;
 }
 
 
@@ -71,4 +74,24 @@ void Evento::mostrarEvento() const {
     } else {
         std::cout << "No hay zona asignada." << std::endl;
     }
+}
+
+
+void Evento::registrarAsistente(const Asistente& nuevo) {
+    asistentes.insertar(nuevo.getId());
+}
+
+void Evento::registrarAsistenciaPorID(int id) {
+    if (asistentes.registrarAsistenciaPorID(id))
+        std::cout << "Asistencia registrada para el asistente ID: " << id << std::endl;
+    else
+        std::cout << "Asistente con ID " << id << " no encontrado en este evento." << std::endl;
+}
+
+void Evento::mostrarAsistentes() const {
+    asistentes.mostrar();
+}
+
+void Evento::mostrarVIPs() const {
+    asistentes.mostrarSoloVIPs();
 }

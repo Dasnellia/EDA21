@@ -12,11 +12,16 @@ Asistente::Asistente(const char *d = "", const char *n = "", const char *a = "",
     }
 }
 
+Asistente::Asistente() : prioridad(1), Asistencia(false) {}
+
+
 void Asistente::RegistrarAsistencia()
 {
     Asistencia = true;
 }
 
 // Getters
-bool Asistente::getAsistencia() const { return Asistencia; }
-int Asistente::getPrioridad() const { return prioridad; }
+bool Asistente::getAsistencia() const { 
+    return Asistencia; }
+int Asistente::getPrioridad() const { 
+    return prioridad; }

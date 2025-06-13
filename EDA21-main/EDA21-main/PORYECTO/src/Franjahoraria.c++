@@ -18,7 +18,27 @@ FranjaHoraria::FranjaHoraria(int h, int a, int d, int me) {
         dia = d;
         mes = me;
     }
+    fechaHora = {};
+fechaHora.tm_year = anio - 1900;
+fechaHora.tm_mon = mes - 1;
+fechaHora.tm_mday = dia;
+fechaHora.tm_hour = hora;
+
 }
+
+FranjaHoraria::FranjaHoraria(int fechacompleta) {
+    anio = fechacompleta / 1000000;
+    mes  = (fechacompleta / 10000) % 100;
+    dia  = (fechacompleta / 100) % 100;
+    hora = fechacompleta % 100;
+    fechaHora = {};
+fechaHora.tm_year = anio - 1900;
+fechaHora.tm_mon = mes - 1;
+fechaHora.tm_mday = dia;
+fechaHora.tm_hour = hora;
+
+}
+
 
 
 int FranjaHoraria::getHora() const { return hora; }
@@ -31,16 +51,7 @@ void FranjaHoraria::setAnio(int a) { anio = a; }
 void FranjaHoraria::setDia(int d) { dia = d; }
 void FranjaHoraria::setMes(int me) { mes = me; }
 
-bool FranjaHoraria::antesDe(const FranjaHoraria &otra) const
-{
-    if (anio != otra.anio)
-        return anio < otra.anio;
-    if (mes != otra.mes)
-        return mes < otra.mes;
-    if (dia != otra.dia)
-        return dia < otra.dia;
-    return hora < otra.hora;
-}
+
 
 bool FranjaHoraria::igualA(const FranjaHoraria &otra) const
 {
@@ -69,3 +80,4 @@ int FranjaHoraria::getFechanumerica() const {
     std::strftime(buffer, sizeof(buffer), "%Y%m%d%H", &fechaHora);
     return std::stoi(buffer);
 }
+
