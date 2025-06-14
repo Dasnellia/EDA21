@@ -5,7 +5,7 @@
 #include <cstring>
 
 #include "Franjahoraria.h"
-#include "Zona.h"
+#include "zona.h"
 #include "avlasistente.h"
 #include "asistente.h"
 #include "persona.h"
