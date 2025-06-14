@@ -22,6 +22,7 @@ public:
     bool igualA(const FranjaHoraria &otra) const;
     bool antesDe(const FranjaHoraria &otra) const;
     int getFechanumerica() const;
+std::tm FranjaHoraria::getTm();
 
 private:
     int hora;
