@@ -106,4 +106,7 @@ int FranjaHoraria::getFechanumerica() const {
     std::strftime(buffer, sizeof(buffer), "%Y%m%d%H", &fechaHora);
     return std::stoi(buffer);
 }
+std::tm FranjaHoraria::getTm() const {
+    return fechaHora;
+}
 
