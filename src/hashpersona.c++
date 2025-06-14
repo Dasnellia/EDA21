@@ -2,7 +2,7 @@
 #include <string>
 #include <stdlib.h>// para trabajar con funciones new y delete
 #include <limits> // Para numeric_limits
-#include "Persona.h"
+#include "persona.h"
 
 using namespace std;
 
