@@ -1,8 +1,8 @@
 #include <iostream>
 using namespace std;
 
-#include "./include/Franjahoraria.h"
-#include "./include/Evento.h"
+#include "Franjahoraria.h"
+#include "evento.h"
 #include <unordered_map>
 #include <algorithm>
 
